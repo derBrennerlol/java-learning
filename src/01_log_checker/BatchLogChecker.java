@@ -8,9 +8,8 @@ public class BatchLogChecker {
         while (index < logs.length) {
             String log = logs[index];
             String upperLog = log.toUpperCase();
-            String pattern = "";
-            String user = extraxtUsername(log, upperLog, pattern);
-            if (user != "") {
+            String user = extractUsername(log, upperLog);
+            if (!user.isEmpty()) {
                 System.out.println("Betroffener Account isoliert: " + user);
             }
             checkSeverity(upperLog);
@@ -18,14 +17,15 @@ public class BatchLogChecker {
         }
     }
 
-    private static String extraxtUsername(String log, String upperLog, String pattern) {
+    private static String extractUsername(String log, String upperLog) {
+        String pattern = "";
         String username = "";
         if (upperLog.contains("USER: ")) {
             pattern = "USER: ";
         } else if (upperLog.contains("USER ")) { 
             pattern = "USER ";
         }  
-        if (pattern != "") {
+        if (!pattern.isEmpty()) {
             int startIndex = upperLog.indexOf(pattern) + pattern.length();
             String tail = log.substring(startIndex);
             int spaceIndex = tail.indexOf(" ");
