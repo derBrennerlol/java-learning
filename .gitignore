@@ -1,0 +1,8 @@
+# Java Compiler-Outputs (Binärdateien)
+*.class
+
+# VS Code Einstellungen
+.vscode/
+
+# Mac Systemdateien
+.DS_Store
