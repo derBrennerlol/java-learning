@@ -37,11 +37,3 @@ public class Perceptron {
         }
     }
 }
-
-
-/**
- * String[] parts = line.split("\\|");
- * double x1 = Double.parseDouble(parts[3].split("=")[1].trim());
- * double x2 = Double.parseDouble(parts[4].split("=")[1].trim());
- * double sum = (x1 * w1) + (x2 * w2);
- */
