@@ -30,8 +30,14 @@ public class Perceptron {
                 double x2 = Double.parseDouble(parts[4].split("=")[1].trim());
                 LogEntry entry = new LogEntry(user, timestamp, status, x1, x2);
                 logList.add(entry);
+                double sum = entry.getRiskScore(w1, w2, 0.0);
+                if (sum >= threshold) {
+                    System.out.println("ALARM!! [Score: " + sum + "] -> " + line);
+                }
+
             }
 
+            System.out.println("--- Gefilterte Logs ---");
             for (LogEntry entry : logList) {
                 if (entry.getUser().equals("tbrenner") && entry.getStatus()) {
                     System.out.println(entry);
